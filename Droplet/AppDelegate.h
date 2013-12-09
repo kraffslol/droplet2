@@ -7,8 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ScreenshotsListener.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate,
+                                    DirectoryListenerDelegate>
+{
+    ScreenshotsListener *screenshotsDirectoryListener_;
+}
 
 @property (assign) IBOutlet NSWindow *window;
 

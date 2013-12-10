@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FF237833185667CB003CCE7B /* ScreenshotsListener.m in Sources */ = {isa = PBXBuildFile; fileRef = FF237832185667CB003CCE7B /* ScreenshotsListener.m */; };
+		FF237836185678A6003CCE7B /* LSFileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = FF237835185678A6003CCE7B /* LSFileUploader.m */; };
+		FF23783A1856CD6F003CCE7B /* LSFileUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2378391856CD6F003CCE7B /* LSFileUpload.m */; };
 		FF39EDD3185657E4008796DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDD2185657E4008796DA /* Cocoa.framework */; };
 		FF39EDDD185657E4008796DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDDB185657E4008796DA /* InfoPlist.strings */; };
 		FF39EDDF185657E4008796DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDDE185657E4008796DA /* main.m */; };
@@ -32,6 +34,11 @@
 /* Begin PBXFileReference section */
 		FF237831185667CB003CCE7B /* ScreenshotsListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotsListener.h; sourceTree = "<group>"; };
 		FF237832185667CB003CCE7B /* ScreenshotsListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotsListener.m; sourceTree = "<group>"; };
+		FF237834185678A6003CCE7B /* LSFileUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSFileUploader.h; sourceTree = "<group>"; };
+		FF237835185678A6003CCE7B /* LSFileUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSFileUploader.m; sourceTree = "<group>"; };
+		FF2378371856CB1F003CCE7B /* LSFileUploadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSFileUploadDelegate.h; sourceTree = "<group>"; };
+		FF2378381856CD6F003CCE7B /* LSFileUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSFileUpload.h; sourceTree = "<group>"; };
+		FF2378391856CD6F003CCE7B /* LSFileUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSFileUpload.m; sourceTree = "<group>"; };
 		FF39EDCF185657E4008796DA /* Droplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Droplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF39EDD2185657E4008796DA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF39EDD5185657E4008796DA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -74,6 +81,11 @@
 		FF39EDC6185657E4008796DA = {
 			isa = PBXGroup;
 			children = (
+				FF2378381856CD6F003CCE7B /* LSFileUpload.h */,
+				FF2378391856CD6F003CCE7B /* LSFileUpload.m */,
+				FF2378371856CB1F003CCE7B /* LSFileUploadDelegate.h */,
+				FF237834185678A6003CCE7B /* LSFileUploader.h */,
+				FF237835185678A6003CCE7B /* LSFileUploader.m */,
 				FF237831185667CB003CCE7B /* ScreenshotsListener.h */,
 				FF237832185667CB003CCE7B /* ScreenshotsListener.m */,
 				FF39EDD8185657E4008796DA /* Droplet */,
@@ -233,7 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF39EDE6185657E4008796DA /* AppDelegate.m in Sources */,
+				FF23783A1856CD6F003CCE7B /* LSFileUpload.m in Sources */,
 				FF39EDDF185657E4008796DA /* main.m in Sources */,
+				FF237836185678A6003CCE7B /* LSFileUploader.m in Sources */,
 				FF237833185667CB003CCE7B /* ScreenshotsListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

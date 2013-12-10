@@ -12,6 +12,8 @@
 
 @property (retain) ScreenshotsListener *screenshotsDirectoryListener;
 
+- (void)uploadFiles:(NSArray*)filenames;
+
 @end
 
 
@@ -44,6 +46,22 @@
 {
     // Upload
     NSLog(@"Detected screenshot");
+    [self uploadFiles:[NSArray arrayWithObject:fileURL.path]];
+}
+
+- (void)uploadFiles:(NSArray*)filenames
+{
+    NSString *file = nil;
+    NSString *filename;
+    
+    file  = [filenames objectAtIndex:0];
+    filename = [file lastPathComponent];
+    //NSLog(filename);
+    
+    
+    if(file)
+        // If theres a file upload it!
+        return;
 }
 
 @end

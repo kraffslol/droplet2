@@ -5,7 +5,8 @@
 var express = require('express'),
   http = require('http'),
   fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  rand = require('generate-key');
 
 var app = module.exports = express();
 
@@ -48,7 +49,10 @@ app.post('/upload', function(req, res) {
         res.end();
       }
       else {
-        var newPath = __dirname + "/public/files/" + fileName;
+
+        // Generate random string to optimistically avoid duplicates
+        var newFileName = rand.generateKey(7) + '-' + fileName;
+        var newPath = __dirname + '/public/files/' + newFileName;
 
         // Move the file to the new path
         fs.rename(tempPath, newPath, function(err) {
@@ -57,8 +61,8 @@ app.post('/upload', function(req, res) {
             console.log(err);
           }
 
-          //res.redirect("/files/" + fileName);
-          res.send('ok');
+          res.redirect('/files/' + newFileName);
+          //res.send('ok');
         });
       }
     });

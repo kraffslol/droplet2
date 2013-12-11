@@ -23,7 +23,7 @@ app.use(express.bodyParser({
 }));
 app.use(express.limit('10mb'));
 app.use(express.methodOverride());
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
 
@@ -61,7 +61,8 @@ app.post('/upload', function(req, res) {
             console.log(err);
           }
 
-          res.redirect('/files/' + newFileName);
+          //res.redirect('/files/' + newFileName);
+          res.send(req.protocol + "://" + req.get('host') + '/files/' + newFileName);
           //res.send('ok');
         });
       }

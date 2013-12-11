@@ -14,7 +14,7 @@
 
 @optional
 - (void)fileUpload:(LSFileUpload*)fileUpload didFailWithError:(NSString*)error;
-- (void)fileUploadDidSuccess:(LSFileUpload*)fileUpload;
+- (void)fileUploadDidSuccess:(LSFileUpload*)fileUpload didSuccessWithResponse:(NSString*)response;
 - (void)fileUploadDidStartUpload:(LSFileUpload*)fileUpload;
 - (void)fileUpload:(LSFileUpload*)fileUpload didChangeProgression:(float)progression
          bytesRead:(long)bytesRead

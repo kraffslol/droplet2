@@ -12,7 +12,8 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate,
                                     DirectoryListenerDelegate,
-                                    LSFileUploaderDelegate>
+                                    LSFileUploaderDelegate,
+                                    NSUserNotificationCenterDelegate>
 {
     ScreenshotsListener *screenshotsDirectoryListener_;
     LSFileUploader *fileUploader_;

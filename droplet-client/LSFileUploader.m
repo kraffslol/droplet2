@@ -46,7 +46,7 @@ tries = tries_;
     NSURL *source = [NSURL fileURLWithPath:filepath];
     self.filepath = filepath;
     self.filename = filename;
-    NSString *encodedFilename = [self.filename stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //NSString *encodedFilename = [self.filename stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
     
     LSFileUpload *tmpFileUpload = nil;
@@ -86,9 +86,16 @@ tries = tries_;
         [self.delegate fileUploaderDidStart:self];
 }
 
-- (void)fileUploadDidSuccess:(LSFileUpload*)fileUpload
+- (void)fileUploadDidSuccess:(LSFileUpload*)fileUpload didSuccessWithResponse:(NSString *)response
 {
     NSLog(@"Success!");
+    //NSString *url = [NSString stringWithFormat:@"%@", fileUpload.destination];
+    NSLog(@"%@", response);
+    
+    if([self.delegate respondsToSelector:@selector(fileUploader:didSuccess:fileName:filePath:)])
+        [self.delegate fileUploader:self didSuccess:response fileName:self.filename filePath:self.filepath];
+    [self.fileUpload cancel];
+    self.fileUpload = nil;
 }
 
 - (void)fileUpload:(LSFileUpload *)fileUpload

@@ -45,6 +45,23 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    [NSApp setServicesProvider:self];
+}
+
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowDidUpdate:)
+                                                 name:NSWindowDidUpdateNotification
+                                               object:nil];
+    
+}
+
+- (void)windowDidUpdate:(NSNotification*)notification
+{
+    //NSLog(@"Notifcation");
+    //if(self.statusItem && self.statusItem.view.window)
+    //    [self.statusItem.view.window makeKeyAndOrderFront:self];
 }
 
 - (void)directoryListener:(ScreenshotsListener *)aDirectoryListener newFile:(NSURL *)fileURL
@@ -82,6 +99,19 @@
             fileName:(NSString*)filename
             filePath:(NSString*)filepath
 {
+    NSString *type = NSStringPboardType;
+    [[NSPasteboard generalPasteboard] declareTypes:[NSArray arrayWithObject:type] owner:nil];
+    [[NSPasteboard generalPasteboard] setString:url forType:type];
+    
+    if(NSClassFromString(@"NSUserNotification")) {
+        NSUserNotification *notification = [NSUserNotification new];
+        notification.hasActionButton = NO;
+        notification.title = @"File uploaded";
+        notification.informativeText = @"The URL has been written into your pasteboard";
+        NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+        [center setDelegate:self];
+        [center deliverNotification:notification];
+    }
 }
 
 - (void)fileUploaderDidStart:(LSFileUploader*)fileUploader
@@ -91,6 +121,11 @@
 - (void)fileUploader:(LSFileUploader*)fileUploader
 didChangeProgression:(float)progression
 {
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
+{
+    return YES;
 }
 
 @end

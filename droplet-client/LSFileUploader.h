@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LSHTTPFileUpload.h"
 #import "LSFileUpload.h"
 #import "LSFileUploadDelegate.h"
 
@@ -24,15 +25,15 @@
 
 @end
 
-@interface LSFileUploader : NSObject <LSFileUploaderDelegate> {
-    LSFileUpload *fileupload_;
+@interface LSFileUploader : NSObject <LSFileUploadDelegate> {
+    LSFileUpload *fileUpload_;
     NSString *filename_;
     NSString *filepath_;
     int tries_;
     //NSObject <LSFileUploaderDelegate> *delegate_;
 }
 
-@property (nonatomic, assign) NSObject <LSFileUploaderDelegate> *delegate;
+@property (assign) NSObject <LSFileUploaderDelegate> *delegate;
 
 - (void)uploadFile:(NSString*)filepath
         toFilename:(NSString*)filename;

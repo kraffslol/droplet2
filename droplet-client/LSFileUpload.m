@@ -16,6 +16,7 @@ delegate = delegate_;
 
 - (id)initWithDestination:(NSString *)destination source:(NSURL *)source delegate:(NSObject <LSFileUploadDelegate> *)delegate
 {
+    NSLog(@"init?");
     self = [super init];
     if(self) {
         destination_ = destination;

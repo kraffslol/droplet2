@@ -4,6 +4,7 @@
 
 var express = require('express'),
   http = require('http'),
+  fs = require('fs'),
   path = require('path');
 
 var app = module.exports = express();
@@ -15,9 +16,9 @@ var app = module.exports = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.use(express.bodyParser());
+app.use(express.bodyParser({uploadDir: __dirname + '/public/uploads/tmp'}));
 app.use(express.methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
 
@@ -26,7 +27,27 @@ app.use(app.router);
  */
 
 app.post('/upload', function(req, res) {
-  // TO DO: upload route
+  fs.readFile(req.files.image.path, function(err, data) {
+  		var imageName = req.files.image.name;
+
+		if(!imageName){
+  			console.log("Error");
+  			res.end();
+		} else {
+  			var newPath = __dirname + "/public/uploads/" + imageName;
+
+  			fs.readFile(req.files.image.path, function(err, data) {
+  				fs.writeFile(newPath, data, function(err) {
+  					if(err) {
+  						console.log(err);
+  					}
+  					//res.redirect("/uploads/" + imageName);
+  					res.send('ok');
+  					
+  				});
+  			});
+  		}
+  });
 });
 
 

@@ -10,15 +10,18 @@
 		FF237833185667CB003CCE7B /* ScreenshotsListener.m in Sources */ = {isa = PBXBuildFile; fileRef = FF237832185667CB003CCE7B /* ScreenshotsListener.m */; };
 		FF237836185678A6003CCE7B /* LSFileUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = FF237835185678A6003CCE7B /* LSFileUploader.m */; };
 		FF23783A1856CD6F003CCE7B /* LSFileUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2378391856CD6F003CCE7B /* LSFileUpload.m */; };
+		FF23783D1857F821003CCE7B /* LSHTTPFileUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23783C1857F821003CCE7B /* LSHTTPFileUpload.m */; };
 		FF39EDD3185657E4008796DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDD2185657E4008796DA /* Cocoa.framework */; };
 		FF39EDDD185657E4008796DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDDB185657E4008796DA /* InfoPlist.strings */; };
 		FF39EDDF185657E4008796DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDDE185657E4008796DA /* main.m */; };
 		FF39EDE3185657E4008796DA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE1185657E4008796DA /* Credits.rtf */; };
 		FF39EDE6185657E4008796DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDE5185657E4008796DA /* AppDelegate.m */; };
-		FF39EDE9185657E4008796DA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE7185657E4008796DA /* MainMenu.xib */; };
 		FF39EDEB185657E4008796DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDEA185657E4008796DA /* Images.xcassets */; };
 		FF39EDF2185657E4008796DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDF1185657E4008796DA /* XCTest.framework */; };
 		FF39EDF3185657E4008796DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDD2185657E4008796DA /* Cocoa.framework */; };
+		FF4B929D1857F9FD00A80EC4 /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */; };
+		FF4B929E18580DDF00A80EC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE7185657E4008796DA /* MainMenu.xib */; };
+		FF4B92A018580F2700A80EC4 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FF4B929F18580F1800A80EC4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF4B92A018580F2700A80EC4 /* CURLHandle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		FF237831185667CB003CCE7B /* ScreenshotsListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScreenshotsListener.h; sourceTree = "<group>"; };
 		FF237832185667CB003CCE7B /* ScreenshotsListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScreenshotsListener.m; sourceTree = "<group>"; };
@@ -39,6 +55,8 @@
 		FF2378371856CB1F003CCE7B /* LSFileUploadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSFileUploadDelegate.h; sourceTree = "<group>"; };
 		FF2378381856CD6F003CCE7B /* LSFileUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSFileUpload.h; sourceTree = "<group>"; };
 		FF2378391856CD6F003CCE7B /* LSFileUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSFileUpload.m; sourceTree = "<group>"; };
+		FF23783B1857F821003CCE7B /* LSHTTPFileUpload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSHTTPFileUpload.h; sourceTree = "<group>"; };
+		FF23783C1857F821003CCE7B /* LSHTTPFileUpload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSHTTPFileUpload.m; sourceTree = "<group>"; };
 		FF39EDCF185657E4008796DA /* Droplet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Droplet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF39EDD2185657E4008796DA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FF39EDD5185657E4008796DA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -55,6 +73,7 @@
 		FF39EDEA185657E4008796DA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FF39EDF0185657E4008796DA /* DropletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF39EDF1185657E4008796DA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CURLHandle.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4B929D1857F9FD00A80EC4 /* CURLHandle.framework in Frameworks */,
 				FF39EDD3185657E4008796DA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,6 +101,8 @@
 		FF39EDC6185657E4008796DA = {
 			isa = PBXGroup;
 			children = (
+				FF23783B1857F821003CCE7B /* LSHTTPFileUpload.h */,
+				FF23783C1857F821003CCE7B /* LSHTTPFileUpload.m */,
 				FF2378381856CD6F003CCE7B /* LSFileUpload.h */,
 				FF2378391856CD6F003CCE7B /* LSFileUpload.m */,
 				FF2378371856CB1F003CCE7B /* LSFileUploadDelegate.h */,
@@ -106,6 +128,7 @@
 		FF39EDD1185657E4008796DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */,
 				FF39EDD2185657E4008796DA /* Cocoa.framework */,
 				FF39EDF1185657E4008796DA /* XCTest.framework */,
 				FF39EDD4185657E4008796DA /* Other Frameworks */,
@@ -157,6 +180,7 @@
 				FF39EDCB185657E4008796DA /* Sources */,
 				FF39EDCC185657E4008796DA /* Frameworks */,
 				FF39EDCD185657E4008796DA /* Resources */,
+				FF4B929F18580F1800A80EC4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -226,7 +250,7 @@
 				FF39EDDD185657E4008796DA /* InfoPlist.strings in Resources */,
 				FF39EDEB185657E4008796DA /* Images.xcassets in Resources */,
 				FF39EDE3185657E4008796DA /* Credits.rtf in Resources */,
-				FF39EDE9185657E4008796DA /* MainMenu.xib in Resources */,
+				FF4B929E18580DDF00A80EC4 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF39EDE6185657E4008796DA /* AppDelegate.m in Sources */,
+				FF23783D1857F821003CCE7B /* LSHTTPFileUpload.m in Sources */,
 				FF23783A1856CD6F003CCE7B /* LSFileUpload.m in Sources */,
 				FF39EDDF185657E4008796DA /* main.m in Sources */,
 				FF237836185678A6003CCE7B /* LSFileUploader.m in Sources */,
@@ -370,6 +395,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rickard/Documents/Development/fileshuttle,
+					"/Users/rickard/Documents/Development/droplet/droplet-client",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Droplet/Droplet-Prefix.pch";
 				INFOPLIST_FILE = "Droplet/Droplet-Info.plist";
@@ -383,6 +413,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/rickard/Documents/Development/fileshuttle,
+					"/Users/rickard/Documents/Development/droplet/droplet-client",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Droplet/Droplet-Prefix.pch";
 				INFOPLIST_FILE = "Droplet/Droplet-Info.plist";

@@ -6,13 +6,16 @@
 //  Copyright (c) 2013 Larickstudios. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import "ScreenshotsListener.h"
+#import "LSFileUploader.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate,
-                                    DirectoryListenerDelegate>
+                                    DirectoryListenerDelegate,
+                                    LSFileUploaderDelegate>
 {
     ScreenshotsListener *screenshotsDirectoryListener_;
+    LSFileUploader *fileUploader_;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -12,12 +12,12 @@
 @interface LSFileUpload : NSObject {
     NSString *destination_;
     NSURL *source_;
-    //NSObject <LSFileUploadDelegate> *delegate_;
+    __unsafe_unretained NSObject <LSFileUploadDelegate> *delegate_;
 }
 
 @property (retain) NSString *destination;
 @property (retain) NSURL *source;
-@property (nonatomic, assign) NSObject <LSFileUploadDelegate> *delegate;
+@property (assign) NSObject <LSFileUploadDelegate> *delegate;
 
 - (id)initWithDestination:(NSString *)destination
                    source:(NSURL *)source

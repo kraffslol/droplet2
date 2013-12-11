@@ -12,6 +12,8 @@
 	<dict>
 		<key>3CED2801-F517-47EF-90E7-0A2598603933</key>
 		<string>https://github.com/kraffslol/droplet.git</string>
+		<key>F4FC41AB-D536-4BA2-BAA4-7A31DCC86DE3</key>
+		<string>https://github.com/kraffslol/fileshuttle.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Droplet/Droplet.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>3CED2801-F517-47EF-90E7-0A2598603933</key>
 		<string>../../..</string>
+		<key>F4FC41AB-D536-4BA2-BAA4-7A31DCC86DE3</key>
+		<string>../../../../fileshuttle</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/kraffslol/droplet.git</string>
@@ -35,6 +39,14 @@
 			<string>3CED2801-F517-47EF-90E7-0A2598603933</string>
 			<key>IDESourceControlWCCName</key>
 			<string>droplet</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F4FC41AB-D536-4BA2-BAA4-7A31DCC86DE3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>fileshuttle</string>
 		</dict>
 	</array>
 </dict>

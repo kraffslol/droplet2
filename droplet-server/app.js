@@ -5,7 +5,8 @@
 var express = require('express'),
   http = require('http'),
   fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  rand = require('generate-key');
 
 var app = module.exports = express();
 
@@ -16,7 +17,11 @@ var app = module.exports = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.use(express.bodyParser({uploadDir: __dirname + '/public/uploads/tmp'}));
+app.use(express.bodyParser({
+  uploadDir: __dirname + '/public/files/tmp',
+  keepExtensions: true
+}));
+app.use(express.limit('10mb'));
 app.use(express.methodOverride());
 //app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
@@ -27,27 +32,45 @@ app.use(app.router);
  */
 
 app.post('/upload', function(req, res) {
-  fs.readFile(req.files.image.path, function(err, data) {
-  		var imageName = req.files.image.name;
+  
+  // Check that post data field "file" exists
+  if(req.files.file) {
 
-		if(!imageName){
-  			console.log("Error");
-  			res.end();
-		} else {
-  			var newPath = __dirname + "/public/uploads/" + imageName;
+    // Temporary path of file 
+    var tempPath = req.files.file.path;
 
-  			fs.readFile(req.files.image.path, function(err, data) {
-  				fs.writeFile(newPath, data, function(err) {
-  					if(err) {
-  						console.log(err);
-  					}
-  					//res.redirect("/uploads/" + imageName);
-  					res.send('ok');
-  					
-  				});
-  			});
-  		}
-  });
+    // Read the file (Oh why thank you, captain obvious)
+    fs.readFile(req.files.file.path, function(err, data) {
+      var fileName = req.files.file.name;
+      
+      // Is the file valid?
+      if(!fileName) {
+        console.log("Error");
+        res.end();
+      }
+      else {
+
+        // Generate random string to optimistically avoid duplicates
+        var newFileName = rand.generateKey(7) + '-' + fileName;
+        var newPath = __dirname + '/public/files/' + newFileName;
+
+        // Move the file to the new path
+        fs.rename(tempPath, newPath, function(err) {
+
+          if(err) {
+            console.log(err);
+          }
+
+          res.redirect('/files/' + newFileName);
+          //res.send('ok');
+        });
+      }
+    });
+  }
+  else {
+    res.writeHead(400, {'content-type': 'text/plain'});
+    res.end('400');
+  }
 });
 
 

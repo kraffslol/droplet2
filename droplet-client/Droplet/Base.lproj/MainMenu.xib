@@ -662,5 +662,6 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
+        <customObject id="SUD-nN-0vx" customClass="SUUpdater"/>
     </objects>
 </document>

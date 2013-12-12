@@ -203,7 +203,7 @@ didChangeProgression:(float)progression
 - (void)openPreferences
 {
     [self.window makeKeyAndOrderFront:self];
-    [NSApp setActivationPolicy:NSApplicationActivationPolicyRegular];
+    [NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
     [NSApp activateIgnoringOtherApps:YES];
 }
 

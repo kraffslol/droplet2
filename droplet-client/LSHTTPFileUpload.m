@@ -7,13 +7,11 @@
 //
 
 #import "LSHTTPFileUpload.h"
-#import <CURLHandle/CURLHandle.h>
 
 @interface LSHTTPFileUpload ()
 
 @property (assign) long fileSize;
 @property (assign) long totalBytesWritten;
-@property (strong, readwrite) CURLHandle *httpSession;
 @property (nonatomic, retain) NSMutableData *responseData;
 
 @end
@@ -22,12 +20,11 @@
 
 @synthesize fileSize = fileSize_,
             totalBytesWritten = totalBytesWritten_,
-            httpSession = httpSession_,
             responseData = responseData_;
 
 - (void)cancel
 {
-    [self.httpSession cancel];
+    // Cancel
 }
 
 -(NSURLRequest *)postRequestWithURL: (NSString *)url

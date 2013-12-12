@@ -21,9 +21,7 @@
 		FF39EDE6185657E4008796DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDE5185657E4008796DA /* AppDelegate.m */; };
 		FF39EDF2185657E4008796DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDF1185657E4008796DA /* XCTest.framework */; };
 		FF39EDF3185657E4008796DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDD2185657E4008796DA /* Cocoa.framework */; };
-		FF4B929D1857F9FD00A80EC4 /* CURLHandle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */; };
 		FF4B929E18580DDF00A80EC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE7185657E4008796DA /* MainMenu.xib */; };
-		FF4B92A018580F2700A80EC4 /* CURLHandle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */; };
 		FF4B92A31859144A00A80EC4 /* LSStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4B92A21859144A00A80EC4 /* LSStatusItemView.m */; };
 		FF4B92A518591C5300A80EC4 /* status_item.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B92A418591C5300A80EC4 /* status_item.png */; };
 		FF8CCE4918591C8D009E010D /* status_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FF8CCE4818591C8D009E010D /* status_item@2x.png */; };
@@ -48,7 +46,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FF4B92A018580F2700A80EC4 /* CURLHandle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +79,6 @@
 		FF39EDE8185657E4008796DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FF39EDF0185657E4008796DA /* DropletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF39EDF1185657E4008796DA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CURLHandle.framework; sourceTree = "<group>"; };
 		FF4B92A11859144A00A80EC4 /* LSStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSStatusItemView.h; sourceTree = "<group>"; };
 		FF4B92A21859144A00A80EC4 /* LSStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatusItemView.m; sourceTree = "<group>"; };
 		FF4B92A418591C5300A80EC4 /* status_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_item.png; sourceTree = "<group>"; };
@@ -96,7 +92,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF4B929D1857F9FD00A80EC4 /* CURLHandle.framework in Frameworks */,
 				FF39EDD3185657E4008796DA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,7 +140,6 @@
 		FF39EDD1185657E4008796DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF4B929C1857F9FD00A80EC4 /* CURLHandle.framework */,
 				FF39EDD2185657E4008796DA /* Cocoa.framework */,
 				FF39EDF1185657E4008796DA /* XCTest.framework */,
 				FF39EDD4185657E4008796DA /* Other Frameworks */,

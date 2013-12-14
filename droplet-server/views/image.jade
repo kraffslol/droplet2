@@ -1,0 +1,8 @@
+extend layout
+block content
+	header
+		h2 #{imagename}
+			a.direct(href='files/#{imagename}') Direct link
+	section#content(style='padding-top: 35px;')
+		a(href='#{imagename}')
+			img.img-responsive(src='http://placehold.it/1920x1200')

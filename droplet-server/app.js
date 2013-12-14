@@ -24,6 +24,8 @@ app.use(express.bodyParser({
 app.use(express.limit('10mb'));
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 app.use(app.router);
 
 
@@ -74,6 +76,11 @@ app.post('/upload', function(req, res) {
   }
 });
 
+
+app.get('/image/placeholder', function(req, res) {
+  res.render('image',
+    { imagename : '12345' });
+});
 
 /**
  * Start Server

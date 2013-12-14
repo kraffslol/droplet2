@@ -26,5 +26,11 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSTextField *customHostTextField;
+@property (assign) IBOutlet NSButton *hostCheckbox;
+
+- (IBAction)hostChanged:(id)sender;
+- (IBAction)hostTextChanged:(id)sender;
+
 
 @end

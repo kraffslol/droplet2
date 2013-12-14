@@ -50,7 +50,19 @@ tries = tries_;
 
     
     LSFileUpload *tmpFileUpload = nil;
-    NSString *destination = @"http://localhost:3000/upload";
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *destination = @"";
+    if([defaults boolForKey:@"use_custom_host"]) {
+        NSLog(@"Using custom host");
+        if([defaults objectForKey:@"custom_host"])
+            destination = [NSString stringWithFormat:@"%@/upload", [defaults objectForKey:@"custom_host"]];
+        else
+            return;
+    } else {
+        NSLog(@"Using default host");
+        destination = @"http://localhost:3000/upload";
+    }
     
     tmpFileUpload = [[LSHTTPFileUpload alloc] initWithDestination:destination source:source delegate:self];
     
@@ -89,7 +101,6 @@ tries = tries_;
 - (void)fileUploadDidSuccess:(LSFileUpload*)fileUpload didSuccessWithResponse:(NSString *)response
 {
     NSLog(@"Success!");
-    //NSString *url = [NSString stringWithFormat:@"%@", fileUpload.destination];
     NSLog(@"%@", response);
     
     if([self.delegate respondsToSelector:@selector(fileUploader:didSuccess:fileName:filePath:)])

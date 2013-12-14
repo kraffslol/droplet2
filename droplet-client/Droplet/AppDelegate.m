@@ -17,11 +17,12 @@
 @property (retain) NSMenu *statusMenu;
 @property (retain) NSMenuItem *separatorMenuItem;
 @property (retain) NSTimer *restoreDockIconTimer;
-
+@property (retain) NSTimer *hostTimer;
 
 - (void)uploadFiles:(NSArray*)filenames;
 - (void)setDisplayStatusItem:(BOOL)flag;
 - (void)displayCompletedIcons;
+- (void)saveCustomHost;
 
 @end
 
@@ -34,7 +35,9 @@
             statusView = statusView_,
             statusMenu = statusMenu_,
             separatorMenuItem = seperatorMenuItem_,
-restoreDockIconTimer = restoreDockIconTimer_;
+restoreDockIconTimer = restoreDockIconTimer_,
+customHostTextField = customHostTextField_,
+hostTimer = hostTimer_;
 
 - (id)init
 {
@@ -67,6 +70,8 @@ restoreDockIconTimer = restoreDockIconTimer_;
     [NSApp setServicesProvider:self];
 }
 
+
+/* Useless functions?
 - (void)awakeFromNib
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -78,9 +83,44 @@ restoreDockIconTimer = restoreDockIconTimer_;
 
 - (void)windowDidUpdate:(NSNotification*)notification
 {
-    //NSLog(@"Notifcation");
-    //if(self.statusItem && self.statusItem.view.window)
-    //    [self.statusItem.view.window makeKeyAndOrderFront:self];
+    if(self.statusItem && self.statusItem.view.window)
+        [self.statusItem.view.window makeKeyAndOrderFront:self];
+} */
+
+- (void)awakeFromNib
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(controlTextDidChange:)
+                                                 name:NSControlTextDidChangeNotification
+                                               object:self.customHostTextField];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // See if checkbox is already saved.
+    if([defaults boolForKey:@"use_custom_host"]) {
+        [self.hostCheckbox setState:[defaults boolForKey:@"use_custom_host"]];
+    }
+    
+    // Enable textbox if checkbox is checked.
+    if([self.hostCheckbox state]) {
+        [self.customHostTextField setEnabled:YES];
+    } else {
+        [self.customHostTextField setEnabled:NO];
+    }
+    
+    // Check if host is set and set value
+    if([defaults objectForKey:@"custom_host"]) {
+        [self.customHostTextField setStringValue:[defaults objectForKey:@"custom_host"]];
+        NSLog(@"found saved host");
+    }
+}
+
+- (void)controlTextDidChange:(NSNotification *)aNotification
+{
+    if(self.hostTimer)
+        [self.hostTimer invalidate];
+    self.hostTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(saveCustomHost) userInfo:nil repeats:NO];
+    NSLog(@"Text changed, saving.");
 }
 
 - (void)directoryListener:(ScreenshotsListener *)aDirectoryListener newFile:(NSURL *)fileURL
@@ -207,9 +247,34 @@ didChangeProgression:(float)progression
     [NSApp activateIgnoringOtherApps:YES];
 }
 
+- (void)saveCustomHost
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *host = [self.customHostTextField stringValue];
+    [defaults setObject:host forKey:@"custom_host"];
+}
+
 - (void)quit
 {
     [NSApp terminate:self];
 }
+
+- (IBAction)hostChanged:(id)sender {
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    if([self.hostCheckbox state]) {
+        NSLog(@"Checked");
+        [defaults setBool:YES forKey:@"use_custom_host"];
+        [self.customHostTextField setEnabled:YES];
+    } else {
+        NSLog(@"Unchecked");
+        [defaults setBool:NO forKey:@"use_custom_host"];
+        [self.customHostTextField setEnabled:NO];
+    }
+}
+
+- (IBAction)hostTextChanged:(id)sender {
+}
+
+
 
 @end

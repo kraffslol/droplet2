@@ -19,7 +19,6 @@
 		FF39EDDF185657E4008796DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDDE185657E4008796DA /* main.m */; };
 		FF39EDE3185657E4008796DA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE1185657E4008796DA /* Credits.rtf */; };
 		FF39EDE6185657E4008796DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDE5185657E4008796DA /* AppDelegate.m */; };
-		FF39EDF2185657E4008796DA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDF1185657E4008796DA /* XCTest.framework */; };
 		FF39EDF3185657E4008796DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDD2185657E4008796DA /* Cocoa.framework */; };
 		FF4B929E18580DDF00A80EC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE7185657E4008796DA /* MainMenu.xib */; };
 		FF4B92A31859144A00A80EC4 /* LSStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4B92A21859144A00A80EC4 /* LSStatusItemView.m */; };
@@ -82,7 +81,6 @@
 		FF39EDE5185657E4008796DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FF39EDE8185657E4008796DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		FF39EDF0185657E4008796DA /* DropletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF39EDF1185657E4008796DA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		FF4B92A11859144A00A80EC4 /* LSStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSStatusItemView.h; sourceTree = "<group>"; };
 		FF4B92A21859144A00A80EC4 /* LSStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatusItemView.m; sourceTree = "<group>"; };
 		FF4B92A418591C5300A80EC4 /* status_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_item.png; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF39EDF3185657E4008796DA /* Cocoa.framework in Frameworks */,
-				FF39EDF2185657E4008796DA /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +146,6 @@
 			children = (
 				FFB0DD8718598DB70046F071 /* Sparkle.framework */,
 				FF39EDD2185657E4008796DA /* Cocoa.framework */,
-				FF39EDF1185657E4008796DA /* XCTest.framework */,
 				FF39EDD4185657E4008796DA /* Other Frameworks */,
 			);
 			name = Frameworks;
@@ -243,11 +239,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Larickstudios;
-				TargetAttributes = {
-					FF39EDEF185657E4008796DA = {
-						TestTargetID = FF39EDCE185657E4008796DA;
-					};
-				};
 			};
 			buildConfigurationList = FF39EDCA185657E4008796DA /* Build configuration list for PBXProject "Droplet" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -463,7 +454,6 @@
 		FF39EE04185657E4008796DA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Droplet.app/Contents/MacOS/Droplet";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -477,7 +467,6 @@
 				);
 				INFOPLIST_FILE = "DropletTests/DropletTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -485,7 +474,6 @@
 		FF39EE05185657E4008796DA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Droplet.app/Contents/MacOS/Droplet";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -495,7 +483,6 @@
 				GCC_PREFIX_HEADER = "Droplet/Droplet-Prefix.pch";
 				INFOPLIST_FILE = "DropletTests/DropletTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

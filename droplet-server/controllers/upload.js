@@ -1,9 +1,12 @@
 'use strict';
-
+var fs = require('fs'),
+  path = require('path'),
+  rand = require('generate-key');
 
 module.exports = function (server) {
 
     server.post('/upload', function (req, res) {
+      console.log(__dirname);
       // Check that post data field "file" exists
       if(req.files.file) {
 
@@ -23,7 +26,9 @@ module.exports = function (server) {
 
             // Generate random string to optimistically avoid duplicates
             var newFileName = rand.generateKey(7) + '-' + fileName;
-            var newPath = __dirname + '/public/files/' + newFileName;
+            var newPath = path.normalize(path.dirname(process.mainModule.filename) + '/public/files/' + newFileName);
+            console.log(newPath);
+            console.log();
 
             // Move the file to the new path
             fs.rename(tempPath, newPath, function(err) {

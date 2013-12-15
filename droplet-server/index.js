@@ -2,6 +2,7 @@
 
 
 var kraken = require('kraken-js'),
+	express = require('express'),
     app = {};
 
 
@@ -18,6 +19,8 @@ app.requestStart = function requestStart(server) {
 
 app.requestBeforeRoute = function requestBeforeRoute(server) {
     // Fired before routing occurs
+    server.use(express.limit('10mb'));
+    server.use(express.methodOverride());
 };
 
 

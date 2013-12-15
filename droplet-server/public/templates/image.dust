@@ -1,0 +1,15 @@
+{>"layouts/master" /}
+
+{<title}
+	{title}
+{/title}
+
+{<body}
+    <header>
+      <h2>Screen Shot.png</h2>
+      <a class="direct" href="#">Direct link</a>
+    </header>
+    <section id="content" style="padding-top: 35px;">
+      <a href="#"><img class="img-responsive" src="http://placehold.it/1920x1200" /></a>
+    </section>
+{/body}

@@ -1,0 +1,7 @@
+{>"layouts/master" /}
+
+{<body}
+	<section id="content" style="padding-top: 35px;">
+		<img class="img-responsive" src="img/droplet.png" />
+	</section>
+{/body}

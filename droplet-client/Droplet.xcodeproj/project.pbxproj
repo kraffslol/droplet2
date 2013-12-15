@@ -19,7 +19,6 @@
 		FF39EDDF185657E4008796DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDDE185657E4008796DA /* main.m */; };
 		FF39EDE3185657E4008796DA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE1185657E4008796DA /* Credits.rtf */; };
 		FF39EDE6185657E4008796DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF39EDE5185657E4008796DA /* AppDelegate.m */; };
-		FF39EDF3185657E4008796DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF39EDD2185657E4008796DA /* Cocoa.framework */; };
 		FF4B929E18580DDF00A80EC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF39EDE7185657E4008796DA /* MainMenu.xib */; };
 		FF4B92A31859144A00A80EC4 /* LSStatusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF4B92A21859144A00A80EC4 /* LSStatusItemView.m */; };
 		FF4B92A518591C5300A80EC4 /* status_item.png in Resources */ = {isa = PBXBuildFile; fileRef = FF4B92A418591C5300A80EC4 /* status_item.png */; };
@@ -30,16 +29,6 @@
 		FFB0DD8918598DDF0046F071 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FFB0DD8718598DB70046F071 /* Sparkle.framework */; };
 		FFB0DD8B18598ED00046F071 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FFB0DD8A18598ED00046F071 /* dsa_pub.pem */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		FF39EDF4185657E4008796DA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF39EDC7185657E4008796DA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF39EDCE185657E4008796DA;
-			remoteInfo = Droplet;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FF4B929F18580F1800A80EC4 /* CopyFiles */ = {
@@ -80,7 +69,6 @@
 		FF39EDE4185657E4008796DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF39EDE5185657E4008796DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FF39EDE8185657E4008796DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		FF39EDF0185657E4008796DA /* DropletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4B92A11859144A00A80EC4 /* LSStatusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSStatusItemView.h; sourceTree = "<group>"; };
 		FF4B92A21859144A00A80EC4 /* LSStatusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSStatusItemView.m; sourceTree = "<group>"; };
 		FF4B92A418591C5300A80EC4 /* status_item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = status_item.png; sourceTree = "<group>"; };
@@ -98,14 +86,6 @@
 			files = (
 				FF39EDD3185657E4008796DA /* Cocoa.framework in Frameworks */,
 				FFB0DD8818598DB70046F071 /* Sparkle.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FF39EDED185657E4008796DA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF39EDF3185657E4008796DA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				FF39EDCF185657E4008796DA /* Droplet.app */,
-				FF39EDF0185657E4008796DA /* DropletTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,24 +192,6 @@
 			productReference = FF39EDCF185657E4008796DA /* Droplet.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FF39EDEF185657E4008796DA /* DropletTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FF39EE03185657E4008796DA /* Build configuration list for PBXNativeTarget "DropletTests" */;
-			buildPhases = (
-				FF39EDEC185657E4008796DA /* Sources */,
-				FF39EDED185657E4008796DA /* Frameworks */,
-				FF39EDEE185657E4008796DA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FF39EDF5185657E4008796DA /* PBXTargetDependency */,
-			);
-			name = DropletTests;
-			productName = DropletTests;
-			productReference = FF39EDF0185657E4008796DA /* DropletTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -254,7 +215,6 @@
 			projectRoot = "";
 			targets = (
 				FF39EDCE185657E4008796DA /* Droplet */,
-				FF39EDEF185657E4008796DA /* DropletTests */,
 			);
 		};
 /* End PBXProject section */
@@ -278,13 +238,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF39EDEE185657E4008796DA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -302,22 +255,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF39EDEC185657E4008796DA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FF39EDF5185657E4008796DA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF39EDCE185657E4008796DA /* Droplet */;
-			targetProxy = FF39EDF4185657E4008796DA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FF39EDDB185657E4008796DA /* InfoPlist.strings */ = {
@@ -451,42 +389,6 @@
 			};
 			name = Release;
 		};
-		FF39EE04185657E4008796DA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Droplet/Droplet-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "DropletTests/DropletTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		FF39EE05185657E4008796DA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Droplet/Droplet-Prefix.pch";
-				INFOPLIST_FILE = "DropletTests/DropletTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -504,15 +406,6 @@
 			buildConfigurations = (
 				FF39EE01185657E4008796DA /* Debug */,
 				FF39EE02185657E4008796DA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FF39EE03185657E4008796DA /* Build configuration list for PBXNativeTarget "DropletTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FF39EE04185657E4008796DA /* Debug */,
-				FF39EE05185657E4008796DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

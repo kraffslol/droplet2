@@ -23,6 +23,8 @@
     LSStatusItemView *statusView_;
     NSMenu *statusMenu_;
     NSMenuItem *seperatorMenuItem_;
+    
+    NSString *uploadedFileURL;
 }
 
 @property (assign) IBOutlet NSWindow *window;

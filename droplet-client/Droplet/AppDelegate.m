@@ -162,6 +162,8 @@ hostTimer = hostTimer_;
     [[NSPasteboard generalPasteboard] declareTypes:[NSArray arrayWithObject:type] owner:nil];
     [[NSPasteboard generalPasteboard] setString:url forType:type];
     
+    uploadedFileURL = url;
+    
     
     if(NSClassFromString(@"NSUserNotification")) {
         NSUserNotification *notification = [NSUserNotification new];
@@ -192,6 +194,13 @@ didChangeProgression:(float)progression
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
 {
     return YES;
+}
+
+- (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
+{
+    NSLog(@"Clicked notification");
+    //NSLog(@"Test: %@", testURL);
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:uploadedFileURL]];
 }
 
 - (void)setDisplayStatusItem:(BOOL)flag;

@@ -10,17 +10,6 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             }
         },
-        requirejs: {
-            compile: {
-                options: {
-                    baseUrl: 'public/js',
-                    mainConfigFile: 'public/js/config.js',
-                    dir: '.build/js',
-                    optimize: 'uglify',
-                    modules: [{name: 'app'}]
-                }
-            }
-        },
         less: {
             compile: {
                 options: {
@@ -86,7 +75,7 @@ module.exports = function (grunt) {
     grunt.loadTasks('./node_modules/makara/tasks/');
 
     grunt.registerTask('i18n', ['clean', 'makara', 'dustjs', 'clean:tmp']);
-    grunt.registerTask('build', ['jshint', 'less', 'requirejs', 'i18n']);
+    grunt.registerTask('build', ['jshint', 'less', 'i18n']);
     grunt.registerTask('test', ['jshint', 'mochacli', 'clean:tmp']);
 
 };

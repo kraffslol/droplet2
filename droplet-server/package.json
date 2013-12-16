@@ -20,7 +20,8 @@
     "dustjs-linkedin": "~2.0.3",
     "dustjs-helpers": "~1.1.1",
     "makara": "~0.3.0",
-    "generate-key": "*"
+    "generate-key": "*",
+    "knox": "*"
   },
   "devDependencies": {
     "mocha": "~1.10.0",

@@ -4,3 +4,4 @@
 node_modules/
 *.iml
 public/files/*
+app-development.json

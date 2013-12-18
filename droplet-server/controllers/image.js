@@ -9,7 +9,6 @@ module.exports = function (server) {
     server.get('/image/:id', function (req, res) {
 		var file = path.dirname(process.mainModule.filename) + '/db/droplet.sqlite3';
 		var db = new sqlite3.Database(file);
-		var imagedata;
 		var url;
 		if(nconf.get('s3Config')) {
 			var conf = nconf.get('s3Config');
@@ -22,11 +21,8 @@ module.exports = function (server) {
 			url = req.protocol + '://' + req.get('host') + '/files/';
 		}
 
-		//db.serialize(function() {
 		db.get('SELECT filename FROM Files WHERE slug = ?', [req.params.id], function(err, row){
 			if(row) {
-				imagedata = row;
-				console.log(row.filename);
 
 				if(nconf.get('s3Config')) {
 					url = url + '/items/' + req.params.id + '/' + row.filename;
@@ -42,9 +38,13 @@ module.exports = function (server) {
 				};
 
 				res.render('image', model);
+			} else {
+				res.writeHead(404, {
+					'content-type': 'text/plain'
+				});
+				res.end('404');
 			}
 		});
-		//});
 
 		db.close();
     });

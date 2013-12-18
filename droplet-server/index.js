@@ -3,11 +3,28 @@
 
 var kraken = require('kraken-js'),
 	express = require('express'),
+    fs = require('fs'),
+    path = require('path'),
+    sqlite3 = require('sqlite3').verbose(),
     app = {};
 
 
 app.configure = function configure(nconf, next) {
     // Fired when an app configures itself
+    var file = path.dirname(process.mainModule.filename) + '/db/droplet.sqlite3';
+    var exists = fs.existsSync(file);
+    if(!exists) {
+        console.log('Creating DB file.');
+        fs.openSync(file, 'w');
+
+        var db = new sqlite3.Database(file);
+        db.serialize(function() {
+            db.run('CREATE TABLE IF NOT EXISTS Files ( id integer PRIMARY KEY, slug varchar(7), filename varchar(255) )');
+        });
+
+        db.close();
+    }
+
     next(null);
 };
 

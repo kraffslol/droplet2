@@ -6,10 +6,10 @@
 
 {<body}
     <header>
-      <h2>Screen Shot.png</h2>
-      <a class="direct" href="#">Direct link</a>
+      <h2>{filename}</h2>
+      <a class="direct" href="{filepath}">Direct link</a>
     </header>
     <section id="content" style="padding-top: 35px;">
-      <a href="#"><img class="img-responsive" src="http://placehold.it/1920x1200" /></a>
+      <a href="{filepath}"><img class="img-responsive" src="{filepath}" /></a>
     </section>
 {/body}

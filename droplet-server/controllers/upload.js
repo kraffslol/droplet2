@@ -3,7 +3,8 @@ var fs = require('fs'),
 path = require('path'),
 rand = require('generate-key'),
 nconf = require('nconf'),
-knox = require('knox');
+knox = require('knox'),
+sqlite3 = require('sqlite3').verbose();
 
 module.exports = function (server) {
 
@@ -28,6 +29,8 @@ module.exports = function (server) {
                     // Generate random string to optimistically avoid duplicates
                     var hash = rand.generateKey(7);
                     var newFileName = hash + '-' + fileName;
+                    var file = path.dirname(process.mainModule.filename) + '/db/droplet.sqlite3';
+                    var db = new sqlite3.Database(file);
 
                     if(nconf.get('s3Config')) {
                         var conf = nconf.get('s3Config');
@@ -51,6 +54,10 @@ module.exports = function (server) {
                                     } else {
                                         url = 'https://' + conf.bucket + '.s3.amazonaws.com' + s3path;
                                     }
+                                    db.serialize(function() {
+                                        db.run('INSERT INTO Files (slug, filename) VALUES (?, ?)', [hash, fileName]);
+                                    });
+                                    db.close();
                                     res.send(url);
                                     resp.resume();
                                 }
@@ -71,6 +78,10 @@ module.exports = function (server) {
                             }
 
                             //res.redirect('/files/' + newFileName);
+                            db.serialize(function() {
+                                db.run('INSERT INTO Files (slug, filename) VALUES (?, ?)', [hash, newFileName]);
+                            });
+                            db.close();
                             res.send(req.protocol + '://' + req.get('host') + '/files/' + newFileName);
                             //res.send('ok');
                         });

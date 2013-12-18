@@ -58,7 +58,8 @@ module.exports = function (server) {
                                         db.run('INSERT INTO Files (slug, filename) VALUES (?, ?)', [hash, fileName]);
                                     });
                                     db.close();
-                                    res.send(url);
+                                    //res.send(url);
+                                    res.send(req.protocol + '://' + req.get('host') + '/image/' + hash);
                                     resp.resume();
                                 }
                                 
@@ -82,7 +83,8 @@ module.exports = function (server) {
                                 db.run('INSERT INTO Files (slug, filename) VALUES (?, ?)', [hash, newFileName]);
                             });
                             db.close();
-                            res.send(req.protocol + '://' + req.get('host') + '/files/' + newFileName);
+                            //res.send(req.protocol + '://' + req.get('host') + '/files/' + newFileName);
+                            res.send(req.protocol + '://' + req.get('host') + '/image/' + hash);
                             //res.send('ok');
                         });
                     }

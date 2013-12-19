@@ -61,9 +61,11 @@
         self.fileSize = [((NSNumber*)[attrs valueForKey:NSFileSize]) longValue];
     }
     
+    NSString *fileName = [self.source lastPathComponent];
+    
     //NSURL *destination = [NSURL URLWithString:self.destination];
     NSData* data = [NSData dataWithContentsOfURL:self.source];
-    NSURLRequest *httpReq = [self postRequestWithURL:self.destination data:data fileName:@"test.png"];
+    NSURLRequest *httpReq = [self postRequestWithURL:self.destination data:data fileName:fileName];
     
     if([self.delegate respondsToSelector:@selector(fileUploadDidStartUpload:)])
         [self.delegate fileUploadDidStartUpload:self];

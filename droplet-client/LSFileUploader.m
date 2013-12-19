@@ -61,7 +61,7 @@ tries = tries_;
             return;
     } else {
         NSLog(@"Using default host");
-        destination = @"http://localhost:3000/upload";
+        destination = @"http://droplet.pw/upload";
     }
     
     tmpFileUpload = [[LSHTTPFileUpload alloc] initWithDestination:destination source:source delegate:self];

@@ -355,6 +355,11 @@ didChangeProgression:(float)progression
 - (IBAction)hostTextChanged:(id)sender {
 }
 
+- (void)statusItemView:(LSStatusItemView *)view
+          didDropFiles:(NSArray *)filenames
+{
+    [self uploadFiles:filenames];
+}
 
 
 @end

@@ -361,5 +361,4 @@ didChangeProgression:(float)progression
     [self uploadFiles:filenames];
 }
 
-
 @end

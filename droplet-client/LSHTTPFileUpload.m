@@ -98,7 +98,18 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.responseData setLength:0];
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    NSInteger code = [httpResponse statusCode];
+    NSLog(@"Got response with %ld", (long)code);
+    if(code == 200) {
+        [self.responseData setLength:0];
+    } else {
+        NSError *error;
+        [connection cancel];
+        if([self.delegate respondsToSelector:@selector(fileUpload:didFailWithError:)])
+            [self.delegate fileUpload:self
+                     didFailWithError:error.description];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

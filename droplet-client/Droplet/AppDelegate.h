@@ -30,9 +30,10 @@
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSTextField *customHostTextField;
 @property (assign) IBOutlet NSButton *hostCheckbox;
+@property (weak) IBOutlet NSButton *checkForUpdatesButton;
+
 
 - (IBAction)hostChanged:(id)sender;
 - (IBAction)hostTextChanged:(id)sender;
-
 
 @end

@@ -22,7 +22,8 @@
     "makara": "~0.3.0",
     "generate-key": "*",
     "knox": "*",
-    "sqlite3": "*"
+    "sqlite3": "*",
+    "s3policy-acl": "*"
   },
   "devDependencies": {
     "mocha": "~1.10.0",

@@ -29,7 +29,7 @@ module.exports = function (server) {
 				console.log(row.filename);
 
 				if(nconf.get('s3Config')) {
-					url = url + '/items/' + req.params.id + '/' + row.filename;
+					url = url +'/'+ row.filename;
 				} else {
 					url = url + row.filename;
 				}

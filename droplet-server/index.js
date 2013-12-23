@@ -19,7 +19,7 @@ app.configure = function configure(nconf, next) {
 
         var db = new sqlite3.Database(file);
         db.serialize(function() {
-            db.run('CREATE TABLE IF NOT EXISTS Files ( id integer PRIMARY KEY, slug varchar(7), filename varchar(255) )');
+            db.run('CREATE TABLE IF NOT EXISTS Files ( id integer PRIMARY KEY, slug varchar(7), filename varchar(255), views integer )');
         });
 
         db.close();

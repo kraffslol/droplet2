@@ -7,6 +7,7 @@
 //
 
 #import "LSStatusItemView.h"
+#import "NSPasteboard+Files.h"
 
 int const LSStatusItemStateNormal = 0;
 int const LSStatusItemStateUploading = 1;
@@ -108,6 +109,26 @@ delegate          = delegate_;
         return;
     state_ = state;
     [self setNeedsDisplay:YES];
+}
+
+- (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender {
+    return NSDragOperationCopy;
+}
+
+- (BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
+    return YES;
+}
+
+- (BOOL)performDragOperation:(id<NSDraggingInfo>)sender {
+    NSPasteboard *pasteboard = sender.draggingPasteboard;
+    NSArray *types = [pasteboard types];
+    if([types containsObject:NSFilenamesPboardType]) {
+        if([self.delegate respondsToSelector:@selector(statusItemView:didDropFiles:)]) {
+            [self.delegate statusItemView:self didDropFiles:[pasteboard filesRepresentation]];
+        }
+    }
+    
+    return YES;
 }
 
 @end

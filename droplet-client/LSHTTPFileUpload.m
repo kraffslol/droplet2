@@ -61,9 +61,11 @@
         self.fileSize = [((NSNumber*)[attrs valueForKey:NSFileSize]) longValue];
     }
     
+    NSString *fileName = [self.source lastPathComponent];
+    
     //NSURL *destination = [NSURL URLWithString:self.destination];
     NSData* data = [NSData dataWithContentsOfURL:self.source];
-    NSURLRequest *httpReq = [self postRequestWithURL:self.destination data:data fileName:@"test.png"];
+    NSURLRequest *httpReq = [self postRequestWithURL:self.destination data:data fileName:fileName];
     
     if([self.delegate respondsToSelector:@selector(fileUploadDidStartUpload:)])
         [self.delegate fileUploadDidStartUpload:self];
@@ -96,7 +98,18 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    [self.responseData setLength:0];
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    NSInteger code = [httpResponse statusCode];
+    NSLog(@"Got response with %ld", (long)code);
+    if(code == 200) {
+        [self.responseData setLength:0];
+    } else {
+        NSError *error;
+        [connection cancel];
+        if([self.delegate respondsToSelector:@selector(fileUpload:didFailWithError:)])
+            [self.delegate fileUpload:self
+                     didFailWithError:error.description];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {

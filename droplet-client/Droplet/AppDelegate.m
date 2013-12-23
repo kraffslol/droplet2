@@ -44,17 +44,25 @@ hostTimer = hostTimer_;
     self = [super init];
     
     if (self) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
         fileUploader_ = [[LSFileUploader alloc] init];
         fileUploader_.delegate = self;
         
+        [defaults addObserver:self
+                   forKeyPath:@"upload_screenshots"
+                      options:NSKeyValueObservingOptionNew
+                      context:nil];
+        
         screenshotsDirectoryListener_ = [[ScreenshotsListener alloc] init];
-        // TODO: Add config for listening.
-        [screenshotsDirectoryListener_ setListening:YES];
+        [screenshotsDirectoryListener_ setListening:[defaults boolForKey:@"upload_screenshots"]];
         [screenshotsDirectoryListener_ setDelegate:self];
         
         statusMenu_ = [[NSMenu alloc] init];
-        [statusMenu_ addItemWithTitle:@"Preferences" action:@selector(openPreferences) keyEquivalent:@""];
+        [statusMenu_ addItem:[NSMenuItem separatorItem]];
+        [statusMenu_ addItemWithTitle:@"Autoupload Screenshots" action:@selector(autoUploadScreenshots:) keyEquivalent:@""];
+        [statusMenu_ addItem:[NSMenuItem separatorItem]];
+        [statusMenu_ addItemWithTitle:@"Preferences..." action:@selector(openPreferences) keyEquivalent:@""];
         [statusMenu_ addItemWithTitle:@"Quit" action:@selector(quit) keyEquivalent:@""];
         
         [self setDisplayStatusItem:YES];
@@ -62,6 +70,33 @@ hostTimer = hostTimer_;
     }
     
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+    if([keyPath isEqualToString:@"upload_screenshots"])
+    {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [self.screenshotsDirectoryListener setListening:[defaults boolForKey:@"upload_screenshots"]];
+    }
+}
+
+- (void)autoUploadScreenshots:(id)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSMenuItem *item = [self.statusMenu itemWithTitle:@"Autoupload Screenshots"];
+
+    if([defaults boolForKey:@"upload_screenshots"]) {
+        [item setState: NSOffState];
+        [defaults setBool:NO forKey:@"upload_screenshots"];
+    } else {
+        [item setState: NSOnState];
+        [defaults setBool:YES forKey:@"upload_screenshots"];
+    }
+    
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -113,6 +148,12 @@ hostTimer = hostTimer_;
         [self.customHostTextField setStringValue:[defaults objectForKey:@"custom_host"]];
         NSLog(@"found saved host");
     }
+    
+    if([defaults boolForKey:@"upload_screenshots"])
+    {
+        NSMenuItem *item = [self.statusMenu itemWithTitle:@"Autoupload Screenshots"];
+        [item setState:NSOnState];
+    }
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification
@@ -162,7 +203,17 @@ hostTimer = hostTimer_;
     [[NSPasteboard generalPasteboard] declareTypes:[NSArray arrayWithObject:type] owner:nil];
     [[NSPasteboard generalPasteboard] setString:url forType:type];
     
+    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:[filepath lastPathComponent]
+                                                      action:@selector(copyURLFromMenuItem:)
+                                               keyEquivalent:@""];
+    [menuItem setToolTip:url];
+    
     uploadedFileURL = url;
+    
+    [self.statusMenu insertItem:menuItem atIndex:0];
+    if([self.statusMenu numberOfItems] > 10) {
+        [self.statusMenu removeItemAtIndex:5];
+    }
     
     
     if(NSClassFromString(@"NSUserNotification")) {
@@ -263,6 +314,26 @@ didChangeProgression:(float)progression
     [defaults setObject:host forKey:@"custom_host"];
 }
 
+- (void)copyURLFromMenuItem:(NSMenuItem*)menuItem
+{
+    NSString *url = menuItem.toolTip;
+    NSString *type = NSStringPboardType;
+    [[NSPasteboard generalPasteboard] declareTypes:[NSArray arrayWithObject:type] owner:nil];
+    [[NSPasteboard generalPasteboard] setString:url forType:type];
+    
+    if(NSClassFromString(@"NSUserNotification")) {
+        NSUserNotification *notification = [NSUserNotification new];
+        notification.hasActionButton = NO;
+        notification.title = @"File url copied.";
+        notification.informativeText = @"The URL has been written into your pasteboard";
+        NSUserNotificationCenter *center = [NSUserNotificationCenter defaultUserNotificationCenter];
+        [center setDelegate:self];
+        [center deliverNotification:notification];
+    }
+    
+    [self displayCompletedIcons];
+}
+
 - (void)quit
 {
     [NSApp terminate:self];
@@ -284,6 +355,10 @@ didChangeProgression:(float)progression
 - (IBAction)hostTextChanged:(id)sender {
 }
 
-
+- (void)statusItemView:(LSStatusItemView *)view
+          didDropFiles:(NSArray *)filenames
+{
+    [self uploadFiles:filenames];
+}
 
 @end
